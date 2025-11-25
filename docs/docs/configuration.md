@@ -68,6 +68,13 @@ Configuring the Tuva EMPI backend is primarily done with a JSON file:
         // The email of a user that already exists in the identity provider. This user will be
         // granted admin permissions in Tuva EMPI on first launch.
         "admin_email": "user@example.com"
+    },
+    // Matching service settings (required)
+    "matching_service": {
+        "k8s_job_runner": {
+            // The namespace where matching jobs should be created (optional, defaults to "default")
+            "job_namespace": "tuva-empi"
+        }
     }
 }
 ```

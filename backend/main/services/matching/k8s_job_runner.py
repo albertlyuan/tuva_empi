@@ -29,9 +29,13 @@ class K8sJobRunner(JobRunner):
 
         config = get_config()
         version = config.version
-
         runner_config = config.matching_service.k8s_job_runner
         assert runner_config
+
+        namespace = runner_config.job_namespace
+        if namespace:
+            # Override the default client with a namespace-scoped one
+            self.k8s = K8sJobClient(namespace=namespace)
 
         secret_volume = (
             SecretVolume(
