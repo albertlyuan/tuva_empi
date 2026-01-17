@@ -18,7 +18,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "tuva-health", // Usually your GitHub org/user name.
-  projectName: "tuva_empi", // Usually your repo name.
+  projectName: "empi", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
