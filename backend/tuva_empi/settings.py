@@ -45,7 +45,7 @@ ALLOWED_HOSTS: list[str] = config.django.allowed_hosts
 
 INSTALLED_APPS = [
     # "django.contrib.admin",
-    "django.contrib.auth",
+    #"django.contrib.auth",
     "django.contrib.contenttypes",
     # "django.contrib.sessions",
     # "django.contrib.messages",
@@ -58,10 +58,10 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "main.views.errors.exception_handler",
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "main.views.auth.jwt.JwtAuthentication",
-    ],
-    "DEFAULT_PERMISSION_CLASSES": ["main.views.auth.permissions.IsMemberOrAdmin"],
+    #"DEFAULT_AUTHENTICATION_CLASSES": [
+    #    "main.views.auth.jwt.JwtAuthentication",
+    #],
+    #"DEFAULT_PERMISSION_CLASSES": ["main.views.auth.permissions.IsMemberOrAdmin"],
     "DEFAULT_PARSER_CLASSES": [
         "rest_framework.parsers.JSONParser",
     ],

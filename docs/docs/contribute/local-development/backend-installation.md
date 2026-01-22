@@ -31,7 +31,9 @@ Inside the dev Docker container, you can run:
 
 #### Testing with localstack S3
 
-When running locally, if you'd like to use the /person-records/import API endpoint in order to test things, you can use `localstack` via the `awslocal` command.
+When running locally, if you'd like to use the
+/person-records/import API endpoint in order to test things,
+you can use `localstack` via the `awslocal` command.
 
 ##### Example
 
@@ -45,7 +47,8 @@ Then, in another dev container terminal `cd backend` and run:
 - Upload a person records file: `aws s3 cp main/tests/resources/tuva_synth/tuva_synth_clean.csv s3://tuva-health-local/raw-person-records.csv`
 - Open a web browser on the host and visit `localhost:9000`
 - Sign-in (there is an initial test user created with username `user` and password `test1234`)
-- Once signed in you might see a 502 bad gateway if the frontend web server isn't running. That's okay, we just want to open the dev tools, go to cookies and copy the OAuth2 Proxy cookies (e.g. `_oauth2_proxy`) into environment variables in the dev container: `export AUTH_COOKIE="..."`. It's possible that there is more than one cookie.
+- Once signed in you might see a 502 bad gateway if the frontend web server isn't running. That's okay, we just want to open the dev tools,
+go to cookies and copy the OAuth2 Proxy cookies (e.g. `_oauth2_proxy`) into environment variables in the dev container: `export AUTH_COOKIE="..."`. It's possible that there is more than one cookie.
 - POST to the config endpoint with cookie: `http -v oauth2-proxy:9000/api/v1/config splink_settings:=@main/tests/resources/tuva_synth/tuva_synth_model.json potential_match_threshold:=0.5 auto_match_threshold:=1 "Cookie:_oauth2_proxy=$AUTH_COOKIE"`
 - POST to the import endpoint: `http -v oauth2-proxy:9000/api/v1/person-records/import s3_uri=s3://tuva-health-local/raw-person-records.csv config_id=cfg_1 "Cookie:_oauth2_proxy=$AUTH_COOKIE"`
 
