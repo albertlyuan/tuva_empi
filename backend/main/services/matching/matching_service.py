@@ -38,6 +38,8 @@ class MatchingService:
     def _get_job_runner(self) -> JobRunner:
         job_runner = get_config().matching_service.job_runner
 
+        self.logger.info(f"JOB RUNNER: {job_runner}")
+
         if job_runner == JobRunnerType.process:
             return ProcessJobRunner()
         elif job_runner == JobRunnerType.k8s:

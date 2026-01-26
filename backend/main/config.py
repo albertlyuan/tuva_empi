@@ -28,13 +28,15 @@ class JsonConfigSettingsSource(PydanticBaseSettingsSource):
 
             config = json.load(f)
             config["version"] = version
+            print("version",version)
 
-            if "job_image" in config.get("matching_service", {}).get(
-                "k8s_job_runner", {}
-            ):
-                # We don't accept job_image via config file since it's easy to let the matching service and
-                # job versions get out of sync
-                del config["matching_service"]["k8s_job_runner"]["job_image"]
+            # why tf do they do this -albert
+            #if "job_image" in config.get("matching_service", {}).get(
+            #    "k8s_job_runner", {}
+            #):
+            #    # We don't accept job_image via config file since it's easy to let the matching service and
+            #    # job versions get out of sync
+            #    del config["matching_service"]["k8s_job_runner"]["job_image"]
 
             if not isinstance(config, dict):
                 raise PydanticCustomError(

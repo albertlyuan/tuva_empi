@@ -1,6 +1,7 @@
 import logging
 import uuid
-from typing import Any, NotRequired, Optional, TypedDict
+from typing import Any, Optional, TypedDict
+from typing_extensions import NotRequired
 
 from django.http import JsonResponse
 from rest_framework import serializers, status

@@ -74,7 +74,7 @@ from main.util.sql import (
 # zip_code: str,
 # county: str,
 # phone: str,
-type PersonRecordDF = pd.DataFrame
+PersonRecordDF = pd.DataFrame
 
 # row_number: NotRequired[int]
 # id: int
@@ -85,7 +85,7 @@ type PersonRecordDF = pd.DataFrame
 # person_record_l_id: int
 # person_record_r_id: int
 # data: str
-type SplinkResultDF = pd.DataFrame
+SplinkResultDF = pd.DataFrame
 
 
 class SplinkSettingsOverrides(TypedDict):

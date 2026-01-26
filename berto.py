@@ -15,9 +15,7 @@ def move_to_s3():
     # upload
     print(
     """
-    aws --endpoint-url=http://localhost:4566 s3 cp \
-    backend/main/tests/resources/tuva_synth/tuva_synth_clean.csv \
-    s3://albert-test/tuva_synth_clean.csv
+    aws --endpoint-url=http://localhost:4566 s3 cp backend/main/tests/resources/tuva_synth/tuva_synth_clean.csv s3://albert-test/tuva_synth_clean.csv
     """
     )
 def import_config():
@@ -44,7 +42,7 @@ def import_data():
 
     # Build the payload
     data = {
-        "s3_uri": "s3://algorex-sandbox001-s3-it-filestaging-secure/2026-01-22/d5a3060c75cd84005ae7b2b67e1870a6_18:52:54/tuva_synth_clean.csv",
+        "s3_uri": "s3://albert-test/tuva_synth_clean.csv",
         "config_id": "cfg_1"
     }
 
@@ -66,8 +64,8 @@ def get_persons():
     print("Response body:", response.text)
 
 if __name__ == "__main__":
-    move_to_s3()
-    import_config()
-    import_data()
-    #get_persons()
+    #move_to_s3()
+    #import_config()
+    #import_data()
+    get_persons()
 

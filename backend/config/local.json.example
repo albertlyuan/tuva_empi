@@ -16,6 +16,7 @@
         "job_runner": "process",
         "k8s_job_runner": {
             "job_image_pull_policy": "Never",
+            "job_image": "tuva-empi-backend:latest",
             "job_config_secret_volume": {
                 "secret_name": "tuva-empi-backend-dev-config",
                 "secret_key": "deployment.json",

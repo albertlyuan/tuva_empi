@@ -6,7 +6,8 @@ import time
 import uuid
 from collections import defaultdict
 from datetime import datetime
-from typing import IO, Any, Mapping, NotRequired, Optional, TypedDict, cast
+from typing import IO, Any, Mapping, Optional, TypedDict, cast
+from typing_extensions import NotRequired
 
 from django.core.files.uploadedfile import UploadedFile
 from django.db import connection, transaction

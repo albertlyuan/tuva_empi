@@ -55,9 +55,9 @@ class PersonMembershipEdge(Edge):
 
 # MatchGroup
 
-type MatchGroupDF = pd.DataFrame
+MatchGroupDF = pd.DataFrame
 
-type MatchGroupRow = tuple[str, bool]
+MatchGroupRow = tuple[str, bool]
 
 
 class MatchGroupRowField(Enum):
@@ -67,9 +67,9 @@ class MatchGroupRowField(Enum):
 
 # MatchGroupResult
 
-type MatchGroupResultDF = pd.DataFrame
+MatchGroupResultDF = pd.DataFrame
 
-type MatchGroupResultRow = tuple[int, str]
+MatchGroupResultRow = tuple[int, str]
 
 
 class MatchGroupResultRowField(Enum):
@@ -79,9 +79,9 @@ class MatchGroupResultRowField(Enum):
 
 # PersonAction
 
-type PersonActionDF = pd.DataFrame
+PersonActionDF = pd.DataFrame
 
-type PersonActionRow = tuple[str, int, int, int, int, int]
+PersonActionRow = tuple[str, int, int, int, int, int]
 
 
 class PersonActionRowField(Enum):
@@ -106,7 +106,7 @@ class MatchGraph:
     """Graph used for determining MatchGroups and PersonActions."""
 
     logger: logging.Logger
-    # TypeError: type 'rustworkx.PyGraph' is not subscriptable
+    # TypeError: 'rustworkx.PyGraph' is not subscriptable
     # graph: rx.PyGraph[Node, Edge]
     node_idx_by_person_id: dict[int, int]
     node_idx_by_person_record_id: dict[int, int]

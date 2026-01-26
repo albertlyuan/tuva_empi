@@ -2,8 +2,6 @@ name: tuva-empi
 
 services:
 
-  backend-migrate: !reset null
-  backend-bootstrap: !reset null
   backend-api: !reset null
   backend-matching-service: !reset null
 
