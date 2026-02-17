@@ -42,7 +42,7 @@ def import_data():
 
     # Build the payload
     data = {
-        "s3_uri": "s3://albert-test/tuva_synth_clean.csv",
+        "s3_uri": "s3://algorex-sandbox004-s3-it-filestaging-secure/2026-01-13/dad9049d11d41a05324d27cbe5d760be_18:56:08/fake_roster_20260109.csv",
         "config_id": "cfg_1"
     }
 
@@ -66,6 +66,6 @@ def get_persons():
 if __name__ == "__main__":
     #move_to_s3()
     #import_config()
-    #import_data()
-    get_persons()
+    import_data()
+    #get_persons()
 
