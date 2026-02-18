@@ -3,7 +3,7 @@ import requests
 from pathlib import Path
 import json
 
-def import_config(config_path):
+def import_config(config_path, potential_match_threshold, auto_match_threshold):
     url = "http://localhost:8000/api/v1/config"
     with open(config_path) as f:
         model_dict = json.load(f)
@@ -11,8 +11,8 @@ def import_config(config_path):
     # Build the payload
     data = {
         "splink_settings": model_dict,
-        "potential_match_threshold": 0.5,
-        "auto_match_threshold": 1
+        "potential_match_threshold": potential_match_threshold,
+        "auto_match_threshold": auto_match_threshold
     }
 
     # Send POST request
@@ -50,7 +50,7 @@ def get_persons():
     print("Response body:", response.text)
 
 if __name__ == "__main__":
-    import_config("backend/main/tests/resorces/tuva_synth/tuva_synth_model.json")
+    import_config("backend/main/tests/resorces/tuva_synth/tuva_synth_model.json", potential_match_threshold=0.5, auto_match_threshold=1.0)
     #from backend/main/tests/resources/tuva_synth/tuva_synth_clean.csv
     run("s3://algorex-sandbox004-s3-it-filestaging-secure/2026-01-13/dad9049d11d41a05324d27cbe5d760be_18:56:08/fake_roster_20260109.csv","cfg_1")
     #get_persons()
