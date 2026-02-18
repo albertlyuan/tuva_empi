@@ -1,28 +1,13 @@
-#docker exec -it myapp python berto.py
 
 import requests
 from pathlib import Path
 import json
 
-def move_to_s3():
-    #is this necessary?
-    #make s3 bucket
-    print(
-    """
-    aws --endpoint-url=http://localhost:4566 s3 mb s3://albert-test
-    """
-    )
-    # upload
-    print(
-    """
-    aws --endpoint-url=http://localhost:4566 s3 cp backend/main/tests/resources/tuva_synth/tuva_synth_clean.csv s3://albert-test/tuva_synth_clean.csv
-    """
-    )
-def import_config():
+def import_config(config_path):
     url = "http://localhost:8000/api/v1/config"
-    path = Path("backend/main/tests/resources/tuva_synth/tuva_synth_model.json")
-    with path.open() as f:
+    with open(config_path) as f:
         model_dict = json.load(f)
+
     # Build the payload
     data = {
         "splink_settings": model_dict,
@@ -37,13 +22,14 @@ def import_config():
     print("Status code:", response.status_code)
     print("Response body:", response.text)
 
-def import_data():
+def run(s3_uri, conf):
+    #services/empi/empi_service.py
     url = "http://localhost:8000/api/v1/person-records/import"
 
     # Build the payload
     data = {
-        "s3_uri": "s3://algorex-sandbox004-s3-it-filestaging-secure/2026-01-13/dad9049d11d41a05324d27cbe5d760be_18:56:08/fake_roster_20260109.csv",
-        "config_id": "cfg_1"
+        "s3_uri": s3_uri,
+        "config_id": conf
     }
 
     # Send POST request
@@ -64,8 +50,17 @@ def get_persons():
     print("Response body:", response.text)
 
 if __name__ == "__main__":
-    #move_to_s3()
-    #import_config()
-    import_data()
+    import_config("backend/main/tests/resorces/tuva_synth/tuva_synth_model.json")
+    #from backend/main/tests/resources/tuva_synth/tuva_synth_clean.csv
+    run("s3://algorex-sandbox004-s3-it-filestaging-secure/2026-01-13/dad9049d11d41a05324d27cbe5d760be_18:56:08/fake_roster_20260109.csv","cfg_1")
     #get_persons()
+    #TODO:
+        #delete file function
+        #export crosswalk function
+    # connect to db container
+    #sudo docker exec -it tuva-empi-db-1 /bin/bash
+    # PGPASSWORD=tuva_empi psql -h db -U tuva_empi postgres
+    # \l to see dbs
+    # \c to connect to db
+    # drop database tuva_empi to reset
 

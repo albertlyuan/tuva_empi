@@ -30,7 +30,7 @@ services:
       - ${TUVA_EMPI_CONFIG_FILE}:/usr/local/etc/tuva-empi/deployment.json
     networks:
       - app-network
-    restart: on-failure
+      #restart: on-failure
 
   backend-bootstrap: #just sets up identity provider
     build:
